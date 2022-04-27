@@ -1,0 +1,48 @@
+# Adicionando uma coluna profissao
+ALTER TABLE pessoas
+ADD COLUMN profissao VARCHAR(10);
+
+# excluindo a coluna profissao
+ALTER TABLE pessoas
+DROP COLUMN profissao;
+
+
+# ADICIONA A COLUNA PROFISSAO DEPOIS DA COLUNA NOME
+ALTER TABLE pessoas
+ADD COLUMN profissao VARCHAR(30) AFTER nome;
+
+# ADICIONA A COLUNA PROFISSAO COMO PRIMEIRO CAMPO
+ALTER TABLE pessoas
+ADD COLUMN profissao VARCHAR(30) FIRST;
+
+#--------- TABELA CURSOS---------
+
+# ADICIONA A COLUNA IDCURSO NA TABELA CURSO
+ALTER TABLE cursos
+ADD COLUMN idcurso INT FIRST;
+
+#ADICIONA IDCURSO COMO CHAVE PRIMARIA
+ALTER TABLE cursos
+ADD PRIMARY KEY(idcurso);
+
+desc cursos;
+
+#-------------MODIFY-------------
+
+# ALTERANDO A COLUNA PROFISSAO
+ALTER TABLE pessoas
+MODIFY COLUMN profissao VARCHAR(20) DEFAULT 'Desempregado';
+
+
+# MODFICAR O NOME DA COLUNA PROFISSAO PARA PROF
+ALTER TABLE pessoas
+CHANGE COLUMN profissao prof VARCHAR(20) DEFAULT 'Desempregado';
+
+
+# ALTERANDO O NOME DA TABELA
+ALTER TABLE pessoas
+RENAME TO gafanhotos;
+
+desc gafanhotos;
+
+SELECT * FROM pessoas;
