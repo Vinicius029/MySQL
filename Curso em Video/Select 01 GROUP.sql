@@ -1,0 +1,28 @@
+# ONDE A PROFISSAO SEJA PROGRAMADOR E FARMACEUTICO
+SELECT profissao, COUNT(profissao) FROM gafanhotos
+WHERE profissao = 'Programador' or profissao = 'Farmacêutico'
+GROUP BY profissao;
+
+# QUANRIDADE DE PESSOAS QUE NASCERAM DEPOIS DE 01/01/2005, AGRUPADO POR SEXO
+SELECT  COUNT(*) FROM gafanhotos
+WHERE nascimento > '2005-01-01';
+
+SELECT sexo, COUNT(*) FROM gafanhotos
+WHERE nascimento > '2005-01-01'
+GROUP BY sexo;
+
+# ONDE A NACIONALIDADE SEJA DIFERENTE DE BRASIL, AGRUPADA POR NACIONALIDADE, E QUE QUANTIDADE DE PESSOA QUE MORA EM UM PAIS SEJA ACIMA DE 3
+SELECT  nome, nacionalidade, COUNT(*) FROM gafanhotos
+WHERE nacionalidade != 'Brasil'
+GROUP BY nacionalidade
+HAVING COUNT(*) > 3;
+
+# AGRUPADA POR ALTURA, PESSOAS QUE ESTÃO ACIMA DOS 100KG, E QUE ESTÃO ACIMA DA MÉDIA DE ALTURA
+SELECT altura, COUNT(*) FROM gafanhotos
+WHERE peso > 100
+GROUP BY altura
+HAVING altura >= (SELECT AVG(altura) FROM gafanhotos);
+
+SELECT AVG(altura) FROM gafanhotos;
+
+
